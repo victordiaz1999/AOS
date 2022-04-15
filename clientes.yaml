@@ -1,0 +1,16 @@
+openapi: 3.0.2
+info:
+  title: '️API clientes: especificación de la API para la gestión de cliente'
+  description: 'Este subsistema se encargará de las operaciones relacionadas con la gestión integral de clientes del taller. Proporcionará operaciones que permitan dar de alta, modificar y buscar clientes (por diferentes criterios) para el resto del sistema.'
+  license:
+    name: MIT
+    url: 'https://opensource.org/licenses/MIT'
+  version: 1.0.0
+  contact:
+    name: AOS - Equipo6
+servers:
+  - url: 'http://127.0.0.1:80'
+    description: Servidor local
+tags:
+  - name: Clientes
+    description: Gestión de clientes del taller
