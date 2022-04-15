@@ -125,3 +125,104 @@ components:
               A URI reference that identifies the specific occurrence of the
               problem.  It may or may not yield further information if
               dereferenced
+              
+headers:
+    ETag:
+      description: Entity Tag (identificador único proporcionado para validación de caché)
+      schema:
+        type: string
+        pattern: '[0-9a-f]*'
+        x-faker: random.uuid
+        example: 24f21ae791234aeb
+    Location:
+      description: '`URI` del nuevo recurso'
+      schema:
+        type: string
+        format: url
+        x-faker: internet.url
+        example: clientes/133
+    Allow:
+      description: Métodos HTTP soportados
+      schema:
+        type: string
+      example: 'GET, PUT, OPTIONS'
+    
+    parameters:
+    idCliente:
+      name: idCliente
+      in: path
+      description: ID del cliente
+      required: true
+      schema:
+        type: integer
+        pattern: ^\d+$
+    nifnie:
+      name: nifnie
+      in: path
+      required: true
+      description: NIE o NIF del cliente
+      schema:
+        type: string
+        pattern: >-
+          ((([X-Z])|([LM])){1}([-]?)((\d){7})([-]?)([A-Z]{1}))|((\d{8})([-]?)([A-Z]))
+    nombre:
+      name: nombre
+      in: path
+      required: true
+      description: Nnombre del cliente
+      schema:
+        type: string
+    ifMatchParam:
+      name: If-Match
+      in: header
+      description: ETag del recurso que se desea modificar
+      required: true
+      schema:
+        type: string
+        pattern: '[0-9a-f]*'
+    
+    requestBodies:
+    clienteRB:
+      description: '`Cliente` data'
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - nif/nie
+              - nombre
+              - apellidos
+              - telefono
+              - domicilio
+              - email
+            properties:
+              nif/nie:
+                description: Documento de identificación del cliente
+                type: string
+                pattern: >-
+                  ((([X-Z])|([LM])){1}([-]?)((\d){7})([-]?)([A-Z]{1}))|((\d{8})([-]?)([A-Z]))
+              nombre:
+                description: Nombre del cliente
+                type: string
+              apellidos:
+                description: Apellidos del cliente
+                type: string
+              telefono:
+                description: Número de teléfono del cliente
+                type: string
+                pattern: (?:6[0-9]|7[1-9])[0-9]{7}$
+              domicilio:
+                description: Dirección del cliente
+                type: string
+              email:
+                description: Correo electrónico del cliente
+                type: string
+                format: email
+            example:
+              nif/nie: 52013776-T
+              nombre: Francisco José
+              apellidos: Morera
+              telefono: 666432534
+              domicilio: 'C/Tajo, 5, 3ºC'
+              email: kikomorera@gmail.com
