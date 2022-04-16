@@ -8,16 +8,179 @@ info:
   version: 1.0.0
   contact:
     name: AOS - Equipo6
-    
 servers:
   - url: 'http://127.0.0.1:80'
     description: Servidor local
-    
 tags:
   - name: Clientes
     description: Gestión de clientes del taller
-
-
+paths:
+  /clientes:
+    get:
+      tags:
+        - Clientes
+      summary: Obtiene una lista de todos los clientes del taller
+      operationId: upm_aos_clientes_cget
+      responses:
+        '200':
+          description: Array de clientes
+          headers:
+            ETag:
+              $ref: '#/components/headers/ETag'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  clientes:
+                    description: array de clientes
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Cliente'
+              examples:
+                clientesExamples:
+                  $ref: '#/components/examples/Clientes'
+        '404':
+          $ref: '#/components/responses/Response_404'
+    post:
+      tags:
+        - Clientes
+      summary: Registrar un cliente
+      description: Registra un nuevo cliente y lo almacena en la base de datos
+      operationId: upm_aos_clientes_post
+      requestBody:
+        $ref: '#/components/requestBodies/clienteRB'
+      responses:
+        '201':
+          description: cliente registrado
+          headers:
+            Location:
+              $ref: '#/components/headers/Location'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cliente'
+        '422':
+          $ref: '#/components/responses/Response_422'
+    options:
+      tags:
+        - Clientes
+      summary: Proporciona la lista de los métodos HTTP soportados.
+      description: Devuelve una cabecera `Allow` con la lista de métodos HTTP soportados.
+      operationId: upm_aos_clientes_coptions
+      responses:
+        '204':
+          description: 'cabecera `Allow` &lt;El cuerpo de la respuesta está vacío&gt;'
+          headers:
+            Allow:
+              $ref: '#/components/headers/Allow'
+  '/clientes/{idCliente}':
+    parameters:
+      - $ref: '#/components/parameters/idCliente'
+    get:
+      tags:
+        - Clientes
+      summary: Recupera un cliente concreto identificado por su ID.
+      description: Devuelve el cliente identificado por `idCliente`.
+      operationId: upm_aos_clientes_get
+      responses:
+        '200':
+          description: Cliente
+          headers:
+            ETag:
+              $ref: '#/components/headers/ETag'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cliente'
+        '404':
+          $ref: '#/components/responses/Response_404'
+    put:
+      tags:
+        - Clientes
+      summary: Modifica los dados de un cliente cocreto.
+      description: Actualiza los datos de un cliente identificado por `idCliente`.
+      operationId: upm_aos_clientes_put
+      parameters:
+        - $ref: '#/components/parameters/ifMatchParam'
+      requestBody:
+        $ref: '#/components/requestBodies/clienteRB'
+      responses:
+        '200':
+          description: '`OK`: los datos del cliente ha sido modificado'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cliente'
+        '404':
+          $ref: '#/components/responses/Response_404'
+        '412':
+          $ref: '#/components/responses/Response_412'
+    options:
+      tags:
+        - Clientes
+      summary: Provides the list of HTTP supported methods.
+      description: Devuelve una cabecera `Allow` con la lista de métodos HTTP soportados.
+      operationId: upm_aos_clientes_id
+      responses:
+        '204':
+          description: 'cabecera `Allow` &lt;El cuerpo de la respuesta está vacío&gt;'
+          headers:
+            Allow:
+              $ref: '#/components/headers/Allow'
+              
+  '/clientes/nifnie/{nifnie}':
+    parameters:
+      - $ref: '#/components/parameters/nifnie'
+    get:
+      tags:
+        - Clientes
+      summary: Recupera un cliente concreto identificado por su NIF o NIE.
+      description: Devuelve el cliente identificado por `nif/nie`.
+      operationId: upm_aos_clientes_get_by_nif/nie
+      responses:
+        '200':
+          description: Cliente
+          headers:
+            ETag:
+              $ref: '#/components/headers/ETag'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cliente'
+        '404':
+          $ref: '#/components/responses/Response_404'
+  '/clientes/nombre/{nombre}':
+    parameters:
+      - $ref: '#/components/parameters/nombre'
+    get:
+      tags:
+        - Clientes
+      summary: Obtiene una lista de aquellos clientes cuyo nombre coincida con el nombre solicitado.
+      description: Devuelve el cliente identificado por `nombre`.
+      operationId: upm_aos_clientes_get_by_nombre
+      responses:
+        '200':
+          description: Array de clientes
+          headers:
+            ETag:
+              $ref: '#/components/headers/ETag'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  clientes:
+                    description: array de clientes
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Cliente'
+              examples:
+                clientesExamples:
+                  $ref: '#/components/examples/Clientes'
+        '404':
+          $ref: '#/components/responses/Response_404'
+          
 components:
   schemas:
     Cliente:
@@ -70,7 +233,7 @@ components:
                               x-faker: lorem.words
                   self:
                       type: object
-                      description: Enlace de relación
+                      description: Enlace 
                       properties:
                           href:
                               description: URL del enlace
@@ -125,8 +288,7 @@ components:
               A URI reference that identifies the specific occurrence of the
               problem.  It may or may not yield further information if
               dereferenced
-              
-headers:
+  headers:
     ETag:
       description: Entity Tag (identificador único proporcionado para validación de caché)
       schema:
@@ -142,12 +304,11 @@ headers:
         x-faker: internet.url
         example: clientes/133
     Allow:
-      description: Métodos HTTP soportados
+      description: Lista de métodos HTTP soportados
       schema:
         type: string
       example: 'GET, PUT, OPTIONS'
-    
-    parameters:
+  parameters:
     idCliente:
       name: idCliente
       in: path
@@ -169,7 +330,7 @@ headers:
       name: nombre
       in: path
       required: true
-      description: Nnombre del cliente
+      description: Nombre del cliente
       schema:
         type: string
     ifMatchParam:
@@ -180,8 +341,7 @@ headers:
       schema:
         type: string
         pattern: '[0-9a-f]*'
-    
-    requestBodies:
+  requestBodies:
     clienteRB:
       description: '`Cliente` data'
       required: true
@@ -226,7 +386,7 @@ headers:
               telefono: 666432534
               domicilio: 'C/Tajo, 5, 3ºC'
               email: kikomorera@gmail.com
-    responses:
+  responses:
     Response_404:
       description: '`NOT FOUND`: recurso no disponible'
       content:
@@ -254,56 +414,55 @@ headers:
           examples:
             response-http-422:
               $ref: '#/components/examples/response-http-422'
-              
-    examples:
-      Clientes:
-        value:
-          - idCliente: 2022
-            nif/nie: 52013776-T
-            nombre: Francisco José
-            apellidos: Morera
-            telefono: 666432534
-            domicilio: 'C/Tajo, 5, 3ºC'
-            email: kikomorera@gmail.com
-            links:
-              parent:
-                href: /clientes
-                rel: listaClientes
-              self:
-                href: /clientes/2022
-                rel: modificar
-          - idCliente: 5069
-            nif/nie: 55216317-G
-            nombre: Raul
-            apellidos: Corrales
-            telefono: 654245983
-            domicilio: 'Avenida de la Albufera, 17'
-            email: raul.corrales@hotmail.com
-            links:
-              parent:
-                href: /clientes
-                rel: listaClientes
-              self:
-                href: /clientes/5069
-                rel: modificar
-      response-http-404:
-        value:
-          type: 'https://httpstatuses.com/404'
-          title: NOT FOUND
-          status: 404
-          detail: El recurso solicitado no está disponible
-          instance: 'about:blank'
-      response-http-412:
-        value:
-          type: 'https://httpstatuses.com/412'
-          title: PRECONDITION FAILED
-          status: 412
-          detail: No se cumple alguna condición de las establecidas previamente
-          instance: 'about:blank'
-      response-http-422:
-        value:
-          type: 'https://httpstatuses.com/422'
-          title: UNPROCESSABLE ENTITY
-          status: 422
-          detail: Faltan datos necesario
-          instance: 'about:blank'
+  examples:
+    Clientes:
+      value:
+        - idCliente: 2022
+          nif/nie: 52013776-T
+          nombre: Francisco José
+          apellidos: Morera
+          telefono: 666432534
+          domicilio: 'C/Tajo, 5, 3ºC'
+          email: kikomorera@gmail.com
+          links:
+            parent:
+              href: /clientes
+              rel: listaClientes
+            self:
+              href: /clientes/2022
+              rel: modificar
+        - idCliente: 555
+          nif/nie: 55216317-G
+          nombre: Raul
+          apellidos: Corrales
+          telefono: 654245983
+          domicilio: 'Avenida de la Albufera, 17'
+          email: raul.corrales@hotmail.com
+          links:
+            parent:
+              href: /clientes
+              rel: listaClientes
+            self:
+              href: /clientes/555
+              rel: modificar
+    response-http-404:
+      value:
+        type: 'https://httpstatuses.com/404'
+        title: NOT FOUND
+        status: 404
+        detail: El recurso solicitado no está disponible...
+        instance: 'about:blank'
+    response-http-412:
+      value:
+        type: 'https://httpstatuses.com/412'
+        title: PRECONDITION FAILED
+        status: 412
+        detail: No se cumple alguna condición previa...
+        instance: 'about:blank'
+    response-http-422:
+      value:
+        type: 'https://httpstatuses.com/422'
+        title: UNPROCESSABLE ENTITY
+        status: 422
+        detail: Falta algún dato necesario...
+        instance: 'about:blank'
