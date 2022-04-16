@@ -254,3 +254,56 @@ headers:
           examples:
             response-http-422:
               $ref: '#/components/examples/response-http-422'
+              
+    examples:
+      Clientes:
+        value:
+          - idCliente: 2022
+            nif/nie: 52013776-T
+            nombre: Francisco José
+            apellidos: Morera
+            telefono: 666432534
+            domicilio: 'C/Tajo, 5, 3ºC'
+            email: kikomorera@gmail.com
+            links:
+              parent:
+                href: /clientes
+                rel: listaClientes
+              self:
+                href: /clientes/2022
+                rel: modificar
+          - idCliente: 5069
+            nif/nie: 55216317-G
+            nombre: Raul
+            apellidos: Corrales
+            telefono: 654245983
+            domicilio: 'Avenida de la Albufera, 17'
+            email: raul.corrales@hotmail.com
+            links:
+              parent:
+                href: /clientes
+                rel: listaClientes
+              self:
+                href: /clientes/5069
+                rel: modificar
+      response-http-404:
+        value:
+          type: 'https://httpstatuses.com/404'
+          title: NOT FOUND
+          status: 404
+          detail: El recurso solicitado no está disponible
+          instance: 'about:blank'
+      response-http-412:
+        value:
+          type: 'https://httpstatuses.com/412'
+          title: PRECONDITION FAILED
+          status: 412
+          detail: No se cumple alguna condición de las establecidas previamente
+          instance: 'about:blank'
+      response-http-422:
+        value:
+          type: 'https://httpstatuses.com/422'
+          title: UNPROCESSABLE ENTITY
+          status: 422
+          detail: Faltan datos necesario
+          instance: 'about:blank'
