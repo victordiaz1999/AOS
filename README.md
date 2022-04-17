@@ -34,7 +34,7 @@ Creación de un subsistema para gestión de clientes de un taller
 
 #### Para modificar datos de un cliente del taller (identificado por idCliente)
 
-		PUT http://x.x.x.x:8080/clientes/42
+		PUT http://x.x.x.x:8080/clientes/2022
 		headers:
 			  if-match = 24f21ae791234aeb
 		Body:
