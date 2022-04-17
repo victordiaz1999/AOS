@@ -8,6 +8,10 @@
 
 Creación de un subsistema para gestión de clientes de un taller
 
+# Instalación y Uso
+
+
+
 # Guía de Uso
 
 #### Para registrar un nuevo cliente
@@ -46,13 +50,13 @@ Creación de un subsistema para gestión de clientes de un taller
 
 #### Para obtener datos de un cliente del taller (identificado por idCliente)
 
-		GET http://x.x.x.x:8080/clientes/452
+		GET http://x.x.x.x:8080/clientes/2022
 		
-#### Para obtener datos de un cliente del taller (identificado por su NIF)
+#### Para obtener datos de un cliente del taller (identificado por su NIF o NIE)
 
-		GET http://x.x.x.x:8080/clientes/nifnie/67834236-N
+		GET http://x.x.x.x:8080/clientes/nifnie/52013776-T
 		
 #### Para obtener una lista de clientes por nombre 
 
-		GET http://x.x.x.x:8080/clientes/nombre/Juanjo
+		GET http://x.x.x.x:8080/clientes/nombre/Francisco
 		
