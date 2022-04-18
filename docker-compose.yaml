@@ -16,7 +16,7 @@ services:
         ports:
           - 4010:4010
         volumes:
-            - ./openapi:/AOS:ro
+            - ./Openapi:/AOS:ro
     frontend:
         image: swaggerapi/swagger-ui
         container_name: clientes_ui
