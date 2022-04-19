@@ -1,7 +1,7 @@
 # AOS-Grupo 6
       Juan José Meneses Fernández
 	  Víctor Díaz de Diego
-	  Raúl Nuñez Alonso
+	  Raúl Núñez Alonso
 	  Víctor Sánchez Corrales
 	 
 # Descripción
@@ -10,6 +10,9 @@ Creación de un subsistema para gestión de clientes de un taller
 
 # Instalación y Uso
 
+Para levantar el servicio es necesario ejecutar el siguiente comando:
+
+docker-compose up
 
 
 # Guía de Uso
