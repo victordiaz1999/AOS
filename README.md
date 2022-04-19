@@ -9,8 +9,15 @@
 Creación de un subsistema para gestión de clientes de un taller
 
 # Instalación y Uso
+-Para la creación de una imagen con un nombre que identifique el contenedor ejecutamos:
 
-Para levantar el servicio es necesario ejecutar el siguiente comando:
+docker build -t ss1:0.1
+
+-Para ejecutar la imagen creando un contenedor usamos el siguiente comando:
+
+docker run -p 8080:8080 ss1:0.1
+
+-Para levantar el servicio es necesario ejecutar el siguiente comando:
 
 docker-compose up
 
