@@ -205,7 +205,8 @@ components:
           telefono:
             description: Número de teléfono del cliente
             type: string
-            pattern: (?:6[0-9]|7[1-9])[0-9]{7}$
+            pattern: >- 
+              (?:6[0-9]|7[1-9])[0-9]{7}$
           domicilio:
             description: Dirección del cliente
             type: string
