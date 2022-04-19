@@ -9,17 +9,64 @@
 Creación de un subsistema para gestión de clientes de un taller
 
 # Instalación y Uso
--Para la creación de una imagen con un nombre que identifique el contenedor ejecutamos:
+Para llevar a cabo el despliegue del servicio son necesarios tres componentes fundamentales:
 
-docker build -t ss1:0.1
+    Backend. Con un servidor Mock que hace las veces de server de prueba para realizar las peticiones.
+    Frontend. Con una utilidad que levanta un servidor HTTP y habilita una interfaz gráfica.
+    Proxy. Con un servidor Proxy que resuelva los problemas de rutas entre Backend y Frontend.
 
--Para ejecutar la imagen creando un contenedor usamos el siguiente comando:
+Docker nos permite agrupar los tres componentes sin necesidad de usar una máquina virtual o servidor remoto. Para cada parte respectivamente se hará uso de:
 
-docker run -p 8080:8080 ss1:0.1
+    SpotLight/Prism
+    Swagger-UI
+    Caddy
 
--Para levantar el servicio es necesario ejecutar el siguiente comando:
+Los pasos para el despliegue, mediante el uso de docker-compose, son los siguientes:
 
-docker-compose up
+	1. Descomprimir el fichero .zip
+
+		Descomprimir el archivo en una carpeta de fácil acceso.
+	2. Abrir la consola
+
+		Para Windows:
+
+		    Windows + r
+		    Escribe cmd y pulsa Intro
+
+		Para máquinas basadas en Linux:
+
+		    CTRL + T
+
+		Para MacOS:
+
+		    OPTION + espacio
+		    Escribe terminal y pulsa Intro
+
+	3. Situarse en la carpeta de la especificación
+
+		cd /ruta/a/la/carpeta
+
+	4. Ejecutar Docker
+
+		Abrir el Daemon de Docker en la máquina(imprescindible haber instalado Docker Desktop previamente)
+
+	5. Ejecutar Docker Compose
+
+		Una vez situado en la carpeta de la especificación, ejecutar el siguiente comando:
+
+		    docker-compose up (imprescindible estar en la carpeta del proyecto; ya que en esa ruta se encuentra el .yaml del Docker Compose).
+
+		En caso de que no se pueda llevar a cabo, añadir la siguiente sentencia después de up:
+
+		    --force-recreate
+
+	6. Acceder al navegador
+
+		En la ruta del navegador, acceder a la URL: localhost:8000
+
+	7. Probar la API
+
+		Realizar las peticiones deseadas desde la UI de Swagger.
 
 
 # Guía de Uso
