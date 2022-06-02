@@ -1,3 +1,0 @@
-flask==2.1.2
-setuptools==62.3.2
-connexion==2.13.1
