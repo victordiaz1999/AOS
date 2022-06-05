@@ -17,10 +17,12 @@
             description: HTTP status code
         detail:
             type: string
-            description: human-readable explanation specific to this occurrence of the problem
+            description:  >-
+                        human-readable explanation specific to this occurrence of the problem
         instance:
             type: string
             format: uri
-            description: "A URI reference that identifies the specific
+            description: >-
+                          "A URI reference that identifies the specific
                           occurrence of the problem. It may or may not yield further
                           information if dereferenced"

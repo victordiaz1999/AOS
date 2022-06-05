@@ -1,1 +1,31 @@
 # Cliente
+      type: object
+      description: Información de un cliente registrado
+      properties:
+        idCliente:
+          description: Identificador del cliente
+          type: integer
+          format: int64
+        nif/nie:
+          description: Documento de identificación del cliente
+          type: string
+          pattern: >-
+              ((([X-Z])|([LM])){1}([-]?)((\d){7})([-]?)([A-Z]{1}))|((\d{8})([-]?)([A-Z]))
+        nombre:
+          description: Nombre del cliente
+          type: string
+        apellidos:
+          description: Apellidos del cliente
+          type: string
+        telefono:
+          description: Número de teléfono del cliente
+          type: string
+          pattern: >- 
+              (?:6[0-9]|7[1-9])[0-9]{7}$
+        domicilio:
+          description: Dirección del cliente
+          type: string
+        email:
+          description: Correo electrónico del cliente
+          type: string
+          format: email
