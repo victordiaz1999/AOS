@@ -122,16 +122,27 @@ Los pasos para el despliegue, mediante el uso de docker-compose, son los siguien
 
 
 # Práctica Parte2
+
 ## Imagen Gestión de Clientes.
-Se ha llevado a cabo el despliegue de la imagen de nuestra aplicación de gestión de clientes mediante Docker. La imagen se puede observar en [DockerHub](https://hub.docker.com/r/jmenesesf/aos-develop).
+
+Se ha llevado a cabo el despliegue de la imagen de nuestra aplicación de gestión de clientes sobre Python3.9 de Docker. 
+La imagen se puede observar en [DockerHub](https://hub.docker.com/r/jmenesesf/aos-develop).
+Podemos descargar directamente la imagen utilizando el comando:
+	`docker pull jmenesesf/aos-develop:latest`
+	
 Con el siguiente comando podemos utilizar la imagen mencionada anteriormente:
-`docker run -d --name aos-develop -p 5000:5000 jmenesesf/aos-develop`
+	`docker run -d --name aos-develop -p 5000:5000 jmenesesf/aos-develop`
 
 # Despliegue mediante Docker-Compose.
-Hemos realizado el despliegue con Docker-Compose gracias a la integración disponible en nuestra carpeta Taller.
-Mediante el comando `docker compose up -d` podemos hacer el despliegue.
+
+Vamos a llevar a cabo la integración de los diferentes servicios, agrupados todos ellos en la carpeta Taller. Para ello, en algunos hemos utilizado  el front end de Swagger y en algunos otros la imagen que han proporcionado.
+Podemos llevar a cabo el despliegue utilizando el siguiente comando (dentro de la carpeta Taller):
+	`docker compose up -d`
 
 # Despliegue mediante Kubernetes.
-Gracias a las herramientas de Kompose y al comando `kompose convert -f docker-compose.yaml` hemos podido generar los ficheros `.yaml` correspondientes al fichero `docker-compose.yml`.
+
+Vamos a realizar el despliegue en Kubernetes mediante el fichero Kompose. De esta forma podemos generar los ficheros correspondientes al `docker-compose-yml` de la carpeta Taller.Lo generaremos mediante el siguiente comando:
+	`kompose convert -f docker-compose.yaml`
+
 
 
