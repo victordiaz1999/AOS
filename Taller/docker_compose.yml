@@ -1,7 +1,6 @@
 version: "3"
 
 services:
-
   clientes:
       image: jmenesesf/aos-develop:latest
       ports:
