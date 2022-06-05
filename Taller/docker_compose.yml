@@ -1,9 +1,21 @@
 version: "3"
 
-services: 
+services:
+
+  clientes:
+      image: jmenesesf/aos-develop:latest
+      ports:
+        - "5000:5000"
+      networks:
+        - taller-api
 
   facturas:
-    
+      image: eloz/grupo8facturas:latest
+      ports:
+        - "81:80"
+      networks:
+        - taller-api
+
 
   vehiculos-backend:
       image: stoplight/prism:4
