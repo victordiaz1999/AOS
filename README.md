@@ -132,6 +132,6 @@ Hemos realizado el despliegue con Docker-Compose gracias a la integración dispo
 Mediante el comando `docker compose up -d` podemos hacer el despliegue.
 
 # Despliegue mediante Kubernetes.
-Gracias a las herramientas de Kompose y al comando `docker convert -f` hemos podido generar los ficheros `.yaml`
+Gracias a las herramientas de Kompose y al comando `kompose convert -f docker-compose.yaml` hemos podido generar los ficheros `.yaml` correspondientes al fichero `docker-compose.yml`.
 
 
