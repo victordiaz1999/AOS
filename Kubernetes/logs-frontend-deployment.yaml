@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker_compose.yml
+    kompose.version: 1.26.1 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: logs-frontend
+  name: logs-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: logs-frontend
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker_compose.yml
+        kompose.version: 1.26.1 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: logs-frontend
+    spec:
+      containers:
+        - env:
+            - name: SWAGGER_JSON
+              value: /logs/openapi.yaml
+          image: swaggerapi/swagger-ui:latest
+          name: logs-ui
+          ports:
+            - containerPort: 8080
+          resources: {}
+      restartPolicy: Always
+status: {}

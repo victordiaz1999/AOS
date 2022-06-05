@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker_compose.yml
+    kompose.version: 1.26.1 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: trabajos-frontend
+  name: trabajos-frontend
+spec:
+  ports:
+    - name: "8090"
+      port: 8090
+      targetPort: 8080
+  selector:
+    io.kompose.service: trabajos-frontend
+status:
+  loadBalancer: {}

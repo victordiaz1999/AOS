@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker_compose.yml
+    kompose.version: 1.26.1 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: logs-backend
+  name: logs-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: logs-backend
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker_compose.yml
+        kompose.version: 1.26.1 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: logs-backend
+    spec:
+      containers:
+        - args:
+            - mock
+            - --cors
+            - -h
+            - 0.0.0.0
+            - /logs/openapi.yaml
+          image: stoplight/prism:4
+          name: log-mocks
+          ports:
+            - containerPort: 4010
+          resources: {}
+      restartPolicy: Always
+status: {}
