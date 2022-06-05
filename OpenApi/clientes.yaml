@@ -129,15 +129,15 @@ paths:
             Allow:
               $ref: '#/components/headers/Allow'
               
-  '/clientes/nifnie/{nifnie}':
+  '/clientes/nif/{nif}':
     parameters:
-      - $ref: '#/components/parameters/nifnie'
+      - $ref: '#/components/parameters/nif'
     get:
       tags:
         - Clientes
       summary: Recupera un cliente concreto identificado por su NIF o NIE.
-      description: Devuelve el cliente identificado por `nif/nie`.
-      operationId: upm_aos_clientes_get_by_nif/nie
+      description: Devuelve el cliente identificado por `nif`.
+      operationId: upm_aos_clientes_get_by_nif
       responses:
         '200':
           description: Cliente
@@ -218,8 +218,8 @@ components:
       schema:
         type: integer
         pattern: ^\d+$
-    nifnie:
-      name: nifnie
+    nif:
+      name: nif
       in: path
       required: true
       description: NIE o NIF del cliente
@@ -251,14 +251,14 @@ components:
           schema:
             type: object
             required:
-              - nif/nie
+              - nif
               - nombre
               - apellidos
               - telefono
               - domicilio
               - email
             properties:
-              nif/nie:
+              nif:
                 description: Documento de identificación del cliente
                 type: string
                 pattern: >-
@@ -281,7 +281,7 @@ components:
                 type: string
                 format: email
             example:
-              nif/nie: 52013776-T
+              nif: 52013776-T
               nombre: Francisco José
               apellidos: Morera
               telefono: 666432534
@@ -319,7 +319,7 @@ components:
     Clientes:
       value:
         - idCliente: 2022
-          nif/nie: 52013776-T
+          nif: 52013776-T
           nombre: Francisco José
           apellidos: Morera
           telefono: 666434534
@@ -333,7 +333,7 @@ components:
               href: /clientes/2022
               rel: modificar
         - idCliente: 555
-          nif/nie: 55216317-G
+          nif: 55216317-G
           nombre: Raul
           apellidos: Corrales
           telefono: 654245983

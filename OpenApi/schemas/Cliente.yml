@@ -6,7 +6,7 @@
           description: Identificador del cliente
           type: integer
           format: int64
-        nif/nie:
+        nif:
           description: Documento de identificación del cliente
           type: string
           pattern: >-
