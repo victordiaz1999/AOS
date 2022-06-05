@@ -125,5 +125,5 @@ Los pasos para el despliegue, mediante el uso de docker-compose, son los siguien
 ## Imagen Gestión de Clientes.
 Se ha llevado a cabo el despliegue de la imagen de nuestra aplicación de gestión de clientes mediante Docker. La imagen se puede observar en [DockerHub](https://hub.docker.com/r/jmenesesf/aos-develop).
 Con el siguiente comando podemos utilizar la imagen mencionada anteriormente:
-`docker run --name <nombre> 80:80 victorsanchezc/aos:latest`
+`docker run -d --name aos-develop -p 5000:5000 jmenesesf/aos-develop`
 
