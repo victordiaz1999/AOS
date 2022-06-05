@@ -127,3 +127,11 @@ Se ha llevado a cabo el despliegue de la imagen de nuestra aplicación de gesti�
 Con el siguiente comando podemos utilizar la imagen mencionada anteriormente:
 `docker run -d --name aos-develop -p 5000:5000 jmenesesf/aos-develop`
 
+# Despliegue mediante Docker-Compose.
+Hemos realizado el despliegue con Docker-Compose gracias a la integración disponible en nuestra carpeta Taller.
+Mediante el comando `docker compose up -d` podemos hacer el despliegue.
+
+# Despliegue mediante Kubernetes.
+Gracias a las herramientas de Kompose y al comando `docker convert -f` hemos podido generar los ficheros `.yaml`
+
+
