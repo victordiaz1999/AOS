@@ -3,6 +3,8 @@
 	  Víctor Díaz de Diego
 	  Raúl Núñez Alonso
 	  Víctor Sánchez Corrales
+	  
+# Práctica Parte 1
 	 
 # Descripción
 
@@ -117,3 +119,11 @@ Los pasos para el despliegue, mediante el uso de docker-compose, son los siguien
 
 		GET http://x.x.x.x:8080/clientes/nombre/Francisco
 		
+
+
+# Práctica Parte2
+## Imagen Gestión de Clientes.
+Se ha llevado a cabo el despliegue de la imagen de nuestra aplicación de gestión de clientes mediante Docker. La imagen se puede observar en [DockerHub](https://hub.docker.com/r/victorsanchezc/aos).
+Con el siguiente comando podemos utilizar la imagen mencionada anteriormente:
+'docker run --name <nombre> 80:80 victorsanchezc/aos:latest'
+
